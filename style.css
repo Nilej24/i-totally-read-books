@@ -13,7 +13,17 @@
   height: 300px;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 
   border: 1px black solid;
   border-radius: 7px;
+}
+
+.book p {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+.book div {
+  cursor: pointer;
 }
