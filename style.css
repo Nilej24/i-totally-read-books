@@ -8,6 +8,14 @@
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
+.library {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
 .book {
   width: 200px;
   height: 300px;
@@ -26,4 +34,16 @@
 
 .book div {
   cursor: pointer;
+}
+
+.add-book {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 300px;
+
+  border: 2px black solid;
+  border-radius: 7px;
+  font-size: 50px;
 }

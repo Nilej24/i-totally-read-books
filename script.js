@@ -1,4 +1,5 @@
 const library = document.querySelector(".library");
+const addBookButton = document.querySelector(".add-book");
 
 let books = [];
 
@@ -13,7 +14,24 @@ function addBook(name, author, pages, read) {
   books.push(new Book(name, author, pages, read));
 }
 
+// removes all books from the screen
+function removeDisplayedBooks() {
+
+  const dBooks = [...library.children];
+
+  dBooks.forEach(function (book) {
+    // so the 'add book' button doesn't get deleted
+    if(book.classList.contains("book"))
+      book.remove();
+  });
+}
+
+// refreshes screen with current books
 function displayCurrentBooks() {
+
+  removeDisplayedBooks();
+
+  // add current books back to the page
   books.forEach(function (book) {
     const newBook = document.createElement("li");
     newBook.classList.add("book");
@@ -31,9 +49,10 @@ function displayCurrentBooks() {
     read.textContent = book.read ? "finished" : "reading...";
 
     newBook.append(name, author, pages, read);
-    library.append(newBook);
+    library.insertBefore(newBook, library.lastElementChild);
   });
 }
 
 addBook("Funny Book", "Hilarious Guy", 69, true);
+addBook("Trash Book", "me", 400, false);
 displayCurrentBooks();
