@@ -7,8 +7,39 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <h1 class="title">Book Tracker</h1>
+
   <ul class="library">
     <div class="add-book">+</div>
   </ul>
+
+  <form>
+    <div class="form-top">
+      <h2>Add a New Book</h2>
+      <div class="close-form">x</div>
+    </div>
+
+    <div class="field">
+      <label for="name">name</label>
+      <input type="text" id="name">
+    </div>
+
+    <div class="field">
+      <label for="author">author</label>
+      <input type="text" id="author">
+    </div>
+
+    <div class="field">
+      <label for="pages">no. of pages</label>
+      <input type="number" id="pages">
+    </div>
+
+    <div class="field">
+      <label for="finished">completed?</label>
+      <input type="checkbox" id="finished">
+    </div>
+
+    <button type="button" class="submit">add</button>
+  </form>
 </body>
 </html>

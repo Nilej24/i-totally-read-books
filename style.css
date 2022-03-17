@@ -8,17 +8,33 @@
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
-.library {
+body {
+  position: relative;
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+}
+
+.title {
+  margin: 20px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.library {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  row-gap: 20px;
   padding: 20px;
 }
 
-.book {
+.book,
+.add-book {
   width: 200px;
   height: 300px;
+  margin: auto;
+}
+
+.book {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -27,12 +43,22 @@
   border-radius: 7px;
 }
 
+.book-top {
+  display: flex;
+}
+
+.book-top .remove-book {
+  margin-left: auto;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
 .book p {
   margin-top: auto;
   margin-bottom: 10px;
 }
 
-.book div {
+.book .finished {
   cursor: pointer;
 }
 
@@ -40,10 +66,72 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 300px;
 
   border: 2px black solid;
   border-radius: 7px;
   font-size: 50px;
+  cursor: pointer;
+}
+
+.add-book:hover {
+  border-color: grey;
+  color: grey;
+}
+
+form {
+  position: fixed;
+  bottom: 0;
+  width: 550px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  align-self: center;
+
+  box-shadow: 0 0 5px black;
+  border-radius: 10px 10px 0 0;
+  background-color: white;
+}
+
+.form-top {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.form-top .close-form {
+  margin-left: auto;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.field label {
+  display: block;
+  width: 90px;
+  margin-right: 10px;
+  text-align: end;
+}
+
+.field input[type="text"],
+.field input[type="number"] {
+  width: 250px;
+}
+
+.submit {
+  margin-top: 10px;
+  margin-left: 100px;
+  width: 50px;
+
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.submit:hover {
+  color: grey;
 }
