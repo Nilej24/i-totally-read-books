@@ -47,10 +47,19 @@ body {
   display: flex;
 }
 
-.book-top .remove-book {
+.book h3 {
+  overflow-wrap: anywhere;
+  margin-right: 10px;
+}
+
+.book .remove-book {
   margin-left: auto;
   margin-right: 5px;
   cursor: pointer;
+}
+
+.book h4 {
+  overflow-wrap: anywhere;
 }
 
 .book p {
