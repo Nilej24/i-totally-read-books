@@ -102,6 +102,10 @@ form {
   background-color: white;
 }
 
+.hidden {
+  display: none;
+}
+
 .form-top {
   display: flex;
   margin-bottom: 10px;
