@@ -19,6 +19,11 @@ function Book(name, author, pages, finished) {
   this.finished = finished;
 }
 
+// prototype function for changing read status on a book
+Book.prototype.changeStatus = function () {
+  this.finished = !this.finished;
+}
+
 // for opening the 'add book' form
 addBookButton.addEventListener("click", function (ev) {
   addBookForm.classList.remove("hidden");
@@ -55,7 +60,7 @@ function removeDisplayedBooks() {
 // function for 'x' button on each book
 // removes the correct book from the array, then reloads books
 function removeBook(ev) {
-  books.splice(ev.target.dataset.bookIndex, 1);
+  books.splice(ev.target.parentElement.parentElement.dataset.bookIndex, 1);
   displayCurrentBooks();
 }
 
@@ -76,10 +81,8 @@ function displayCurrentBooks() {
     name.textContent = book.name;
 
     const closeButton = document.createElement("div");
-    closeButton.classList.add("remove-book");
+    closeButton.classList.add("remove-book", "grey-on-hover");
     closeButton.textContent = "x";
-    // for removing the book
-    closeButton.dataset.bookIndex = i;
     closeButton.addEventListener("click", removeBook);
 
     top.append(name, closeButton);
@@ -92,11 +95,16 @@ function displayCurrentBooks() {
     pages.textContent = book.pages + " pages";
 
     const finished = document.createElement("div");
-    finished.classList.add("finished");
+    finished.classList.add("finished", "grey-on-hover");
     finished.textContent = book.finished ? "finished" : "reading...";
+    finished.addEventListener("click", function () {
+      books[i].changeStatus();
+      displayCurrentBooks();
+    });
 
     const newBook = document.createElement("li");
     newBook.classList.add("book");
+    newBook.dataset.bookIndex = i; // for editing / removing books
     newBook.append(top, author, pages, finished);
     library.insertBefore(newBook, library.lastElementChild);
   }

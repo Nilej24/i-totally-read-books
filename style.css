@@ -55,7 +55,6 @@ body {
 .book .remove-book {
   margin-left: auto;
   margin-right: 5px;
-  cursor: pointer;
 }
 
 .book h4 {
@@ -67,10 +66,6 @@ body {
   margin-bottom: 10px;
 }
 
-.book .finished {
-  cursor: pointer;
-}
-
 .add-book {
   display: flex;
   justify-content: center;
@@ -79,12 +74,10 @@ body {
   border: 2px black solid;
   border-radius: 7px;
   font-size: 50px;
-  cursor: pointer;
 }
 
 .add-book:hover {
   border-color: grey;
-  color: grey;
 }
 
 form {
@@ -114,7 +107,6 @@ form {
 .form-top .close-form {
   margin-left: auto;
   margin-right: 5px;
-  cursor: pointer;
 }
 
 .field {
@@ -142,9 +134,9 @@ form {
 
   appearance: none;
   -webkit-appearance: none;
-  cursor: pointer;
 }
 
-.submit:hover {
+.grey-on-hover:hover {
   color: grey;
+  cursor: pointer;
 }
