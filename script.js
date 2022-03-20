@@ -28,10 +28,9 @@ addBookButton.addEventListener("click", function (ev) {
 // for closing the form
 closeFormButton.addEventListener("click", closeForm);
 window.addEventListener("keydown", function (ev) {
-  if(ev.keyCode == 27)
+  if(ev.keyCode == 27) // esc
     closeForm();
 });
-// the actual function
 function closeForm() {
   addBookForm.classList.add("hidden");
 }
@@ -53,24 +52,35 @@ function removeDisplayedBooks() {
   });
 }
 
+// function for 'x' button on each book
+// removes the correct book from the array, then reloads books
+function removeBook(ev) {
+  books.splice(ev.target.dataset.bookIndex, 1);
+  displayCurrentBooks();
+}
+
 // refreshes screen with current books
 function displayCurrentBooks() {
 
   removeDisplayedBooks();
 
   // add current books back to the page
-  books.forEach(function (book) {
+  for(let i = 0; i < books.length; i++) {
+    const book = books[i];
 
     // this top row thing is for styling
     const top = document.createElement("div");
     top.classList.add("book-top");
 
-      const name = document.createElement("h3");
-      name.textContent = book.name;
+    const name = document.createElement("h3");
+    name.textContent = book.name;
 
-      const closeButton = document.createElement("div");
-      closeButton.classList.add("remove-book");
-      closeButton.textContent = "x";
+    const closeButton = document.createElement("div");
+    closeButton.classList.add("remove-book");
+    closeButton.textContent = "x";
+    // for removing the book
+    closeButton.dataset.bookIndex = i;
+    closeButton.addEventListener("click", removeBook);
 
     top.append(name, closeButton);
     // end of top row
@@ -87,14 +97,18 @@ function displayCurrentBooks() {
 
     const newBook = document.createElement("li");
     newBook.classList.add("book");
-    newBook.dataset.index = 0;
     newBook.append(top, author, pages, finished);
     library.insertBefore(newBook, library.lastElementChild);
-  });
+  }
 }
 
-// submitting the form
-submitButton.addEventListener("click", function (ev) {
+// submitting the form to add books
+submitButton.addEventListener("click",  submitForm);
+addBookForm.addEventListener("keydown", function (ev) {
+  if(ev.keyCode == 13) // enter
+    submitForm();
+});
+function submitForm(ev) {
   const name = nameField.value;
   const author = authorField.value;
   const pages = pagesField.value;
@@ -102,15 +116,15 @@ submitButton.addEventListener("click", function (ev) {
 
   addBook(name, author, pages, finished);
   displayCurrentBooks();
-});
-
-addBook("Funny Book", "Hilarious Guy", 69, true);
-addBook("Trash Book", "me", 400, false);
-addBook("Trash Book", "me", 400, false);
-addBook("Trash Book", "me", 400, false);
-addBook("Trash Book", "me", 400, false);
-addBook("Trash Book", "me", 400, false);
-addBook("Trash Book", "me", 400, false);
-addBook("Trash Book", "me", 400, false);
-addBook("Trash Book", "me", 400, false);
+}
+ 
+addBook("Funny Book1", "Hilarious Guy", 69, true);
+addBook("Trash Book2", "me", 400, false);
+addBook("Trash Book3", "me", 400, false);
+addBook("Trash Book4", "me", 400, false);
+addBook("Trash Book5", "me", 400, false);
+addBook("Trash Book6", "me", 400, false);
+addBook("Trash Book7", "me", 400, false);
+addBook("Trash Book8", "me", 400, false);
+addBook("Trash Book9", "me", 400, false);
 displayCurrentBooks();
