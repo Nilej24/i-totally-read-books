@@ -111,12 +111,9 @@ function displayCurrentBooks() {
 }
 
 // submitting the form to add books
-submitButton.addEventListener("click",  submitForm);
-addBookForm.addEventListener("keydown", function (ev) {
-  if(ev.keyCode == 13) // enter
-    submitForm();
-});
+addBookForm.addEventListener("submit",  submitForm);
 function submitForm(ev) {
+  ev.preventDefault();
   const name = nameField.value;
   const author = authorField.value;
   const pages = pagesField.value;
