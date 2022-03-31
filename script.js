@@ -12,16 +12,17 @@ const submitButton = document.querySelector(".submit");
 
 let books = [];
 
-function Book(name, author, pages, finished) {
-  this.name = name;
-  this.author = author;
-  this.pages = pages;
-  this.finished = finished;
-}
+class Book {
+  constructor(name, author, pages, finished) {
+    this.name = name;
+    this.author = author;
+    this.pages = pages;
+    this.finished = finished;
+  }
 
-// prototype function for changing read status on a book
-Book.prototype.changeStatus = function () {
-  this.finished = !this.finished;
+  changeStatus() {
+    this.finished = !this.finished;
+  }
 }
 
 // for opening the 'add book' form
